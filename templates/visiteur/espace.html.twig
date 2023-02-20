@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+		<title>GSB - Frais</title>
+        <h1>Visiteur</h1>
+	</head>
+	
+	<body>
+		<a href="{{ path('app_renseigner') }}">Renseigner fiche frais</a>
+		<a href="{{ path('app_consulter') }}">Consulter fiche frais</a>
+		<a href="{{ path('app_visiteur_deconnexion') }}">Se déconnecter</a>
+		
+		<h5>{{ app.session.get('nom') }} | {{ app.session.get('prenom') }}</h5>
+
+		
+	</body>
+	
+</html>

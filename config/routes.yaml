@@ -1,0 +1,55 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+app_acceuil:
+    path: /Acceuil
+    controller: App\Controller\AcceuilController::index
+
+app_visiteur:
+    path: /Visiteur
+    controller: App\Controller\VisiteurController::index
+
+app_visiteur_connecter:
+    path: /Visiteur/Connecter
+    controller: App\Controller\VisiteurController::Authentification
+
+app_consulter:
+    path: /Visiteur/Consulter
+    controller: App\Controller\VisiteurController::Consulter
+
+app_renseigner:
+    path: /Visiteur/Renseigner
+    controller: App\Controller\VisiteurController::Renseigner
+
+app_espace_visiteur:
+    path: /Visiteur/Espace
+    controller: App\Controller\VisiteurController::Espace
+
+app_visiteur_deconnexion:
+    path: /visiteur/deconnecter
+    controller: App\Controller\VisiteurController::Deconnecter
+
+app_comptable:
+    path: /Comptable
+    controller: App\Controller\ComptableController::index
+
+app_comptable_connecter:
+    path: /Comptable/Connecter
+    controller: App\Controller\ComptableController::Authentification
+
+app_valider:
+    path: /Comptable/Valider
+    controller: App\Controller\ComptableController::Valider
+
+app_suivre:
+    path: /Comptable/Suivre
+    controller: App\Controller\ComptableController::Suivre
+
+app_espace_comptable:
+    path: /Comptable/Espace
+    controller: App\Controller\ComptableController::Espace
+
+app_comptable_deconnexion:
+    path: /Comptable/deconnecter
+    controller: App\Controller\ComptableController::Deconnecter

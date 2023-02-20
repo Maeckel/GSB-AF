@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    table{
+  border-collapse: collapse;
+}
+tr, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+</style>
+
+	<head>
+		<meta charset="utf-8">
+		<title>GSB - Frais</title>
+        <h1>Visiteur - Consulter fiche frais</h1>
+	</head>
+	
+	<body>
+		<a href="{{ path('app_renseigner') }}">Renseigner fiche frais</a>
+		<a href="{{ path('app_espace_visiteur') }}">Acceuil</a>
+		<a href="{{ path('app_visiteur_deconnexion') }}">Se déconnecter</a>
+		<br/>
+		<form action="{{ path('app_consulter') }}" method="POST">
+		{% if mois != null %}
+			<br/>
+			<label>Veuillez choisir un Mois :</label>
+			<br/>
+			<select name="Mois" id="mois">
+			{% for unmois in mois %}
+        		<option value="{{ unmois.id }}">{{ unmois.id }}</option>
+			{% endfor %}
+			</select>
+			<br/>
+			<br/>
+			{% if fiche is defined %}
+				<h2>Fiche frais<h2/>
+				<table>
+				<thead>
+					<th>Mois</th>
+					<th>Justificatifs</th>
+					<th>Montant validé</th>
+					<th>Date de modifcation</th>
+				</thead>
+				<tr>
+					<td>{{ fiche.id }}</td>
+					<td>{{ fiche.nbJustificatifs }}</td>
+					<td>{{ fiche.montantValide }}</td>
+					<td>{{ fiche.dateModif|date('d-m-Y') }}</td>
+				</tr>
+				</table>
+				<br/>
+				<h2>Ligne frais hors forfait<h2/>
+				<table>
+				<thead>
+					<th>Date</th>
+					<th>Montant</th>
+					<th>Libelle</th>
+				</thead>
+				<tr>
+					<td>{{ fiche.ligneFraisHorsForfait.date|date('d-m-Y') }}</td>
+					<td>{{ fiche.ligneFraisHorsForfait.montant }}</td>
+					<td>{{ fiche.ligneFraisHorsForfait.libelle }}</td>
+				</tr>
+				</table>
+				<br/>
+				<h2>Ligne frais forfait<h2/>
+				<table>
+				<thead>
+					<th>Type</th>
+					<th>Libelle</th>
+					<th>Quantite</th>
+					<th>Montant</th>
+				</thead>
+				{% for unfrais in frais %}
+				<tr>
+					<td>{{ unfrais.Fraisforfait.id }}</td>
+					<td>{{ unfrais.Fraisforfait.libelle  }}</td>
+					<td>{{ unfrais.quantite }}</td>
+					<td>{{ unfrais.Fraisforfait.montant }}</td>
+				</tr>
+				{% endfor %}
+				</table>
+			{% endif %}
+			<br/>
+			<br/>
+			<input type="submit" value="Valider" />
+		{% endif %}
+		{% if mois == null %}
+			<h2>Aucune Fiche Frais cette Année</h2>
+		{% endif %} 
+		</form>
+	</body>
+	
+</html>
