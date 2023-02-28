@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\FicheFraisRepository;
+use App\Entity\LigneFraisHorsForfait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -28,9 +29,6 @@ class FicheFrais
     #[ORM\JoinColumn(nullable: true)]
     private ?Etat $Etat = null;
 
-    #[ORM\OneToOne(mappedBy: 'FicheFrais', cascade: ['persist', 'remove'])]
-    private ?LigneFraisHorsForfait $ligneFraisHorsForfait = null;
-
     #[ORM\OneToMany(mappedBy: 'Fichefrais', targetEntity: LigneFraisForfait::class)]
     private Collection $ligneFraisForfaits;
 
@@ -38,9 +36,13 @@ class FicheFrais
     #[ORM\JoinColumn(nullable: false)]
     private ?Visiteur $visiteur = null;
 
+    #[ORM\OneToMany(mappedBy: 'Fichefrais', targetEntity: LigneFraisHorsForfait::class)]
+    private Collection $ligneFraisHorsForfaits;
+
     public function __construct()
     {
         $this->ligneFraisForfaits = new ArrayCollection();
+        $this->ligneFraisHorsForfaits = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -96,28 +98,6 @@ class FicheFrais
         return $this;
     }
 
-    public function getLigneFraisHorsForfait(): ?LigneFraisHorsForfait
-    {
-        return $this->ligneFraisHorsForfait;
-    }
-
-    public function setLigneFraisHorsForfait(?LigneFraisHorsForfait $ligneFraisHorsForfait): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($ligneFraisHorsForfait === null && $this->ligneFraisHorsForfait !== null) {
-            $this->ligneFraisHorsForfait->setFicheFrais(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($ligneFraisHorsForfait !== null && $ligneFraisHorsForfait->getFicheFrais() !== $this) {
-            $ligneFraisHorsForfait->setFicheFrais($this);
-        }
-
-        $this->ligneFraisHorsForfait = $ligneFraisHorsForfait;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, LigneFraisForfait>
      */
@@ -156,6 +136,36 @@ class FicheFrais
     public function setVisiteur(?Visiteur $visiteur): self
     {
         $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LigneFraisHorsForfait>
+     */
+    public function getLigneFraisHorsForfaits(): Collection
+    {
+        return $this->ligneFraisHorsForfaits;
+    }
+
+    public function addLigneFraisHorsForfait(LigneFraisHorsForfait $ligneFraisHorsForfait): self
+    {
+        if (!$this->ligneFraisHorsForfaits->contains($ligneFraisHorsForfait)) {
+            $this->ligneFraisHorsForfaits->add($ligneFraisHorsForfait);
+            $ligneFraisHorsForfait->setFichefrais($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneFraisHorsForfait(LigneFraisHorsForfait $ligneFraisHorsForfait): self
+    {
+        if ($this->ligneFraisHorsForfaits->removeElement($ligneFraisHorsForfait)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneFraisHorsForfait->getFichefrais() === $this) {
+                $ligneFraisHorsForfait->setFichefrais(null);
+            }
+        }
 
         return $this;
     }

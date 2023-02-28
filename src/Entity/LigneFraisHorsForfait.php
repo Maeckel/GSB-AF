@@ -26,9 +26,9 @@ class LigneFraisHorsForfait
     #[ORM\ManyToOne(inversedBy: 'ligneFraisHorsForfaits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Visiteur $Visiteur = null;
-    
-    #[ORM\OneToOne(inversedBy: 'ligneFraisHorsForfait', cascade: ['persist', 'remove'])]
-    private ?FicheFrais $FicheFrais;
+
+    #[ORM\ManyToOne(inversedBy: 'ligneFraisHorsForfaits', targetEntity: FicheFrais::class)]
+    private ?FicheFrais $Fichefrais = null;
 
     public function getId(): ?int
     {
@@ -83,14 +83,14 @@ class LigneFraisHorsForfait
         return $this;
     }
 
-    public function getFicheFrais(): ?FicheFrais
+    public function getFichefrais(): ?FicheFrais
     {
-        return $this->FicheFrais;
+        return $this->Fichefrais;
     }
 
-    public function setFicheFrais(?FicheFrais $FicheFrais): self
+    public function setFichefrais(?FicheFrais $Fichefrais): self
     {
-        $this->FicheFrais = $FicheFrais;
+        $this->Fichefrais = $Fichefrais;
 
         return $this;
     }

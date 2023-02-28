@@ -67,10 +67,10 @@ class FicheFrais extends \App\Entity\FicheFrais implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'id', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'nbJustificatifs', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'montantValide', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'dateModif', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'Etat', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisHorsForfait', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisForfaits', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'visiteur'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'id', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'nbJustificatifs', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'montantValide', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'dateModif', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'Etat', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisForfaits', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'visiteur', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisHorsForfaits'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'id', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'nbJustificatifs', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'montantValide', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'dateModif', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'Etat', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisHorsForfait', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisForfaits', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'visiteur'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'id', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'nbJustificatifs', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'montantValide', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'dateModif', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'Etat', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisForfaits', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'visiteur', '' . "\0" . 'App\\Entity\\FicheFrais' . "\0" . 'ligneFraisHorsForfaits'];
     }
 
     /**
@@ -283,28 +283,6 @@ class FicheFrais extends \App\Entity\FicheFrais implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getLigneFraisHorsForfait(): ?\App\Entity\LigneFraisHorsForfait
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLigneFraisHorsForfait', []);
-
-        return parent::getLigneFraisHorsForfait();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLigneFraisHorsForfait(?\App\Entity\LigneFraisHorsForfait $ligneFraisHorsForfait): \App\Entity\FicheFrais
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLigneFraisHorsForfait', [$ligneFraisHorsForfait]);
-
-        return parent::setLigneFraisHorsForfait($ligneFraisHorsForfait);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getLigneFraisForfaits(): \Doctrine\Common\Collections\Collection
     {
 
@@ -355,6 +333,39 @@ class FicheFrais extends \App\Entity\FicheFrais implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVisiteur', [$visiteur]);
 
         return parent::setVisiteur($visiteur);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLigneFraisHorsForfaits(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLigneFraisHorsForfaits', []);
+
+        return parent::getLigneFraisHorsForfaits();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addLigneFraisHorsForfait(\App\Entity\LigneFraisHorsForfait $ligneFraisHorsForfait): \App\Entity\FicheFrais
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLigneFraisHorsForfait', [$ligneFraisHorsForfait]);
+
+        return parent::addLigneFraisHorsForfait($ligneFraisHorsForfait);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeLigneFraisHorsForfait(\App\Entity\LigneFraisHorsForfait $ligneFraisHorsForfait): \App\Entity\FicheFrais
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLigneFraisHorsForfait', [$ligneFraisHorsForfait]);
+
+        return parent::removeLigneFraisHorsForfait($ligneFraisHorsForfait);
     }
 
 }

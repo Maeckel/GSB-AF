@@ -74,13 +74,14 @@ INSERT INTO `fiche_frais` (`id`, `visiteur_id`, `etat_id`, `nb_justificatifs`, `
 ('05/2022', 'a17', 'CR' , 10, 5.8, '2022-04-19'),
 ('10/2022', 'a55', 'CR' , 11, 8.6, '2022-09-06'),
 ('12/2022', 'a93', 'CR' , 8, 5.7, '2022-12-25'),
-('03/2022', 'b13', 'CR' , 4, 6.7, '2022-03-24');
+('03/2022', 'b13', 'CR' , 4, 6.7, '2022-03-24'),
+('02/2023', 'a131', 'CR' , 1, 9.7, '2023-02-12');
 
 --
 -- Contenu de la table `LigneFraisHorsForfait`
 --
 
-INSERT INTO `ligne_frais_hors_forfait` (`id`, `visiteur_id`, `fiche_frais_id`, `libelle`, `date`, `montant`) VALUES
+INSERT INTO `ligne_frais_hors_forfait` (`id`, `visiteur_id`, `fichefrais_id`, `libelle`, `date`, `montant`) VALUES
 (1, 'a131', '07/2023', 'congé', '2023-07-18' , 3.0),
 (2, 'a17', '04/2022', 'congé', '2022-02-18' , 3.0),
 (3, 'a55', '09/2022', 'congé', '2022-12-18' , 3.0),
@@ -88,7 +89,9 @@ INSERT INTO `ligne_frais_hors_forfait` (`id`, `visiteur_id`, `fiche_frais_id`, `
 (5, 'a131', '08/2023', 'congé', '2023-07-18' , 3.0),
 (6, 'a17', '05/2022', 'congé', '2022-02-18' , 3.0),
 (7, 'a55', '10/2022', 'congé', '2022-12-18' , 3.0),
-(8, 'a93', '11/2022', 'congé', '2022-12-18' , 3.0);
+(8, 'a93', '11/2022', 'congé', '2022-12-18' , 3.0),
+(9, 'a131', '02/2023', 'congé', '2023-02-18' , 3.0),
+(10, 'a131', '02/2023', 'congé', '2023-02-20' , 5.0);
 
 --
 -- Contenu de la table `LigneFraisForfait`
@@ -99,4 +102,8 @@ INSERT INTO `ligne_frais_forfait` (`visiteur_id`, `fichefrais_id`, `fraisforfait
 ('a131', '07/2023', 'KM', '1'),
 ('a131', '08/2023', 'ETP', '2'),
 ('a131', '08/2023', 'KM', '6'),
-('a131', '08/2023', 'NUI', '2');
+('a131', '08/2023', 'NUI', '2'),
+('a131', '02/2023', 'KM', '3'),
+('a131', '02/2023', 'ETP', '2'),
+('a131', '02/2023', 'REP', '4'),
+('a131', '02/2023', 'NUI', '2');

@@ -31,7 +31,9 @@ tr, td{
 			<br/>
 			<select name="Mois" id="mois">
 			{% for unmois in mois %}
-        		<option value="{{ unmois.id }}">{{ unmois.id }}</option>
+				{% if unmois.id != Month %}
+        			<option value="{{ unmois.id }}">{{ unmois.id }}</option>
+				{% endif %}
 			{% endfor %}
 			</select>
 			<br/>
@@ -60,11 +62,15 @@ tr, td{
 					<th>Montant</th>
 					<th>Libelle</th>
 				</thead>
-				<tr>
-					<td>{{ fiche.ligneFraisHorsForfait.date|date('d-m-Y') }}</td>
-					<td>{{ fiche.ligneFraisHorsForfait.montant }}</td>
-					<td>{{ fiche.ligneFraisHorsForfait.libelle }}</td>
-				</tr>
+				{% for FHF in fiche.ligneFraisHorsForfaits %}
+					{% if FHF != null %}
+					<tr>
+						<td>{{ FHF.date|date('d-m-Y') }}</td>
+						<td>{{ FHF.montant }}</td>
+						<td>{{ FHF.libelle }}</td>
+					</tr>
+					{% endif %}
+				{% endfor %}
 				</table>
 				<br/>
 				<h2>Ligne frais forfait<h2/>
@@ -76,12 +82,14 @@ tr, td{
 					<th>Montant</th>
 				</thead>
 				{% for unfrais in frais %}
+				{% if unfrais != null %}
 				<tr>
 					<td>{{ unfrais.Fraisforfait.id }}</td>
 					<td>{{ unfrais.Fraisforfait.libelle  }}</td>
 					<td>{{ unfrais.quantite }}</td>
 					<td>{{ unfrais.Fraisforfait.montant }}</td>
 				</tr>
+				{% endif %}
 				{% endfor %}
 				</table>
 			{% endif %}
@@ -89,9 +97,6 @@ tr, td{
 			<br/>
 			<input type="submit" value="Valider" />
 		{% endif %}
-		{% if mois == null %}
-			<h2>Aucune Fiche Frais cette Année</h2>
-		{% endif %} 
 		</form>
 	</body>
 	

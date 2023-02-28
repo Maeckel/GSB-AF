@@ -11,12 +11,11 @@
 		<a href="{{ path( 'app_acceuil' ) }}">Acceuil</a>
 		<br/>
 		
-		<?php if( isset( $erreur ) ){ ?>
-			<b><?= $erreur ?></b>
-		<?php } ?>
-		
 		<form action="{{ path('app_visiteur_connecter') }}" method="POST">
-			Identifiant :<br/>
+			<p>Identifiant :</p>
+			{% if erreur is defined and erreur != null %}
+				<h5> {{ erreur }} </h5>
+			{% endif %}
 			<input type="text" name="login" /><br/>
 			Mot de passe :<br/>
 			<input type="password" name="mdp" /><br/>

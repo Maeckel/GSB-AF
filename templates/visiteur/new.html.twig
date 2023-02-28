@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>GSB - Frais</title>
+    <h1>Visiteur - Renseigner fiche frais</h1>
+    <h2>Ajouter un frais hors forfait</h2>
+</head>
+	
+	<body>
+		<a href="{{ path('app_renseigner') }}">Renseigner fiche frais</a>
+        <a href="{{ path('app_consulter') }}">Consulter fiche frais</a>
+		<a href="{{ path('app_espace_visiteur') }}">Acceuil</a>
+		<a href="{{ path('app_visiteur_deconnexion') }}">Se déconnecter</a>
+		<br/>
+		<form action="{{ path('app_frais_hors_forfait') }}" method="POST">
+        <br/>
+        {% if erreur is defined and erreur != null %}
+		    <h5> {{ erreur }} </h5>
+		{% endif %}
+        <br/>
+        <label>Veuillez choisir un libelle :</label>
+        <br/>
+			<select name="Libelle" id="libelle">
+        	<option value="Repas avac un spécialiste lors d'une animation">Repas avac un specialiste lors d'une animation</option>
+            <option value="Achat de fournitures">Achat de fournitures</option>
+            <option value="Reservation de salle pour conférence">Reservation de salle pour conférence</option>
+			</select>
+        <br/>
+        <br/>
+        <br/>
+        <label>Veuillez choisir une date d'engagement :</label>
+        <br/>
+        <input type="date" id="Date" name="date" onkeydown="return false">
+        <br/>
+        <br/>
+        <br/>
+        <label>Veuillez choisir un montant :</label>
+        <br/>
+        <input type="number" id="Montant" step="0.01" name="montant" max="9999999999.99" required>
+        <br/>
+        <br/>
+        <br/>
+        <input type="submit" value="Valider" />
+        </form>
+	</body>
+	
+</html>

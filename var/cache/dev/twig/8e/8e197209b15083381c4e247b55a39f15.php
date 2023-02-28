@@ -53,16 +53,22 @@ class __TwigTemplate_8b478608c416daf6a46acd5985864ec0 extends Template
         echo "\">Acceuil</a>
 \t\t<br/>
 \t\t
-\t\t<?php if( isset( \$erreur ) ){ ?>
-\t\t\t<b><?= \$erreur ?></b>
-\t\t<?php } ?>
-\t\t
 \t\t<form action=\"";
-        // line 18
+        // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_visiteur_connecter");
         echo "\" method=\"POST\">
-\t\t\tIdentifiant :<br/>
-\t\t\t<input type=\"text\" name=\"login\" /><br/>
+\t\t\t<p>Identifiant :</p>
+\t\t\t";
+        // line 16
+        if ((array_key_exists("erreur", $context) && ((isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 16, $this->source); })()) != null))) {
+            // line 17
+            echo "\t\t\t\t<h5> ";
+            echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 17, $this->source); })()), "html", null, true);
+            echo " </h5>
+\t\t\t";
+        }
+        // line 19
+        echo "\t\t\t<input type=\"text\" name=\"login\" /><br/>
 \t\t\tMot de passe :<br/>
 \t\t\t<input type=\"password\" name=\"mdp\" /><br/>
 \t\t\t<br/>
@@ -89,7 +95,7 @@ class __TwigTemplate_8b478608c416daf6a46acd5985864ec0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  62 => 18,  52 => 11,  40 => 1,);
+        return array (  71 => 19,  65 => 17,  63 => 16,  58 => 14,  52 => 11,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -107,12 +113,11 @@ class __TwigTemplate_8b478608c416daf6a46acd5985864ec0 extends Template
 \t\t<a href=\"{{ path( 'app_acceuil' ) }}\">Acceuil</a>
 \t\t<br/>
 \t\t
-\t\t<?php if( isset( \$erreur ) ){ ?>
-\t\t\t<b><?= \$erreur ?></b>
-\t\t<?php } ?>
-\t\t
 \t\t<form action=\"{{ path('app_visiteur_connecter') }}\" method=\"POST\">
-\t\t\tIdentifiant :<br/>
+\t\t\t<p>Identifiant :</p>
+\t\t\t{% if erreur is defined and erreur != null %}
+\t\t\t\t<h5> {{ erreur }} </h5>
+\t\t\t{% endif %}
 \t\t\t<input type=\"text\" name=\"login\" /><br/>
 \t\t\tMot de passe :<br/>
 \t\t\t<input type=\"password\" name=\"mdp\" /><br/>

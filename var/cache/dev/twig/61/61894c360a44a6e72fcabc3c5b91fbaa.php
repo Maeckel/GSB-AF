@@ -90,24 +90,30 @@ tr, td{
             $context['_seq'] = twig_ensure_traversable((isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 33, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["unmois"]) {
                 // line 34
-                echo "        \t\t<option value=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unmois"], "id", [], "any", false, false, false, 34), "html", null, true);
-                echo "\">";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unmois"], "id", [], "any", false, false, false, 34), "html", null, true);
-                echo "</option>
-\t\t\t";
+                echo "\t\t\t\t";
+                if ((twig_get_attribute($this->env, $this->source, $context["unmois"], "id", [], "any", false, false, false, 34) != (isset($context["Month"]) || array_key_exists("Month", $context) ? $context["Month"] : (function () { throw new RuntimeError('Variable "Month" does not exist.', 34, $this->source); })()))) {
+                    // line 35
+                    echo "        \t\t\t<option value=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unmois"], "id", [], "any", false, false, false, 35), "html", null, true);
+                    echo "\">";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unmois"], "id", [], "any", false, false, false, 35), "html", null, true);
+                    echo "</option>
+\t\t\t\t";
+                }
+                // line 37
+                echo "\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['unmois'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 36
+            // line 38
             echo "\t\t\t</select>
 \t\t\t<br/>
 \t\t\t<br/>
 \t\t\t";
-            // line 39
+            // line 41
             if (array_key_exists("fiche", $context)) {
-                // line 40
+                // line 42
                 echo "\t\t\t\t<h2>Fiche frais<h2/>
 \t\t\t\t<table>
 \t\t\t\t<thead>
@@ -118,20 +124,20 @@ tr, td{
 \t\t\t\t</thead>
 \t\t\t\t<tr>
 \t\t\t\t\t<td>";
-                // line 49
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 49, $this->source); })()), "id", [], "any", false, false, false, 49), "html", null, true);
-                echo "</td>
-\t\t\t\t\t<td>";
-                // line 50
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 50, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 50), "html", null, true);
-                echo "</td>
-\t\t\t\t\t<td>";
                 // line 51
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 51, $this->source); })()), "montantValide", [], "any", false, false, false, 51), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 51, $this->source); })()), "id", [], "any", false, false, false, 51), "html", null, true);
                 echo "</td>
 \t\t\t\t\t<td>";
                 // line 52
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 52, $this->source); })()), "dateModif", [], "any", false, false, false, 52), "d-m-Y"), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 52, $this->source); })()), "nbJustificatifs", [], "any", false, false, false, 52), "html", null, true);
+                echo "</td>
+\t\t\t\t\t<td>";
+                // line 53
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 53, $this->source); })()), "montantValide", [], "any", false, false, false, 53), "html", null, true);
+                echo "</td>
+\t\t\t\t\t<td>";
+                // line 54
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 54, $this->source); })()), "dateModif", [], "any", false, false, false, 54), "d-m-Y"), "html", null, true);
                 echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t</table>
@@ -143,21 +149,39 @@ tr, td{
 \t\t\t\t\t<th>Montant</th>
 \t\t\t\t\t<th>Libelle</th>
 \t\t\t\t</thead>
-\t\t\t\t<tr>
-\t\t\t\t\t<td>";
-                // line 64
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 64, $this->source); })()), "ligneFraisHorsForfait", [], "any", false, false, false, 64), "date", [], "any", false, false, false, 64), "d-m-Y"), "html", null, true);
-                echo "</td>
-\t\t\t\t\t<td>";
+\t\t\t\t";
                 // line 65
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 65, $this->source); })()), "ligneFraisHorsForfait", [], "any", false, false, false, 65), "montant", [], "any", false, false, false, 65), "html", null, true);
-                echo "</td>
-\t\t\t\t\t<td>";
-                // line 66
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 66, $this->source); })()), "ligneFraisHorsForfait", [], "any", false, false, false, 66), "libelle", [], "any", false, false, false, 66), "html", null, true);
-                echo "</td>
-\t\t\t\t</tr>
-\t\t\t\t</table>
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["fiche"]) || array_key_exists("fiche", $context) ? $context["fiche"] : (function () { throw new RuntimeError('Variable "fiche" does not exist.', 65, $this->source); })()), "ligneFraisHorsForfaits", [], "any", false, false, false, 65));
+                foreach ($context['_seq'] as $context["_key"] => $context["FHF"]) {
+                    // line 66
+                    echo "\t\t\t\t\t";
+                    if (($context["FHF"] != null)) {
+                        // line 67
+                        echo "\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td>";
+                        // line 68
+                        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["FHF"], "date", [], "any", false, false, false, 68), "d-m-Y"), "html", null, true);
+                        echo "</td>
+\t\t\t\t\t\t<td>";
+                        // line 69
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["FHF"], "montant", [], "any", false, false, false, 69), "html", null, true);
+                        echo "</td>
+\t\t\t\t\t\t<td>";
+                        // line 70
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["FHF"], "libelle", [], "any", false, false, false, 70), "html", null, true);
+                        echo "</td>
+\t\t\t\t\t</tr>
+\t\t\t\t\t";
+                    }
+                    // line 73
+                    echo "\t\t\t\t";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['FHF'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 74
+                echo "\t\t\t\t</table>
 \t\t\t\t<br/>
 \t\t\t\t<h2>Ligne frais forfait<h2/>
 \t\t\t\t<table>
@@ -168,54 +192,52 @@ tr, td{
 \t\t\t\t\t<th>Montant</th>
 \t\t\t\t</thead>
 \t\t\t\t";
-                // line 78
+                // line 84
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable((isset($context["frais"]) || array_key_exists("frais", $context) ? $context["frais"] : (function () { throw new RuntimeError('Variable "frais" does not exist.', 78, $this->source); })()));
+                $context['_seq'] = twig_ensure_traversable((isset($context["frais"]) || array_key_exists("frais", $context) ? $context["frais"] : (function () { throw new RuntimeError('Variable "frais" does not exist.', 84, $this->source); })()));
                 foreach ($context['_seq'] as $context["_key"] => $context["unfrais"]) {
-                    // line 79
-                    echo "\t\t\t\t<tr>
+                    // line 85
+                    echo "\t\t\t\t";
+                    if (($context["unfrais"] != null)) {
+                        // line 86
+                        echo "\t\t\t\t<tr>
 \t\t\t\t\t<td>";
-                    // line 80
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 80), "id", [], "any", false, false, false, 80), "html", null, true);
-                    echo "</td>
+                        // line 87
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 87), "id", [], "any", false, false, false, 87), "html", null, true);
+                        echo "</td>
 \t\t\t\t\t<td>";
-                    // line 81
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 81), "libelle", [], "any", false, false, false, 81), "html", null, true);
-                    echo "</td>
+                        // line 88
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 88), "libelle", [], "any", false, false, false, 88), "html", null, true);
+                        echo "</td>
 \t\t\t\t\t<td>";
-                    // line 82
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unfrais"], "quantite", [], "any", false, false, false, 82), "html", null, true);
-                    echo "</td>
+                        // line 89
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["unfrais"], "quantite", [], "any", false, false, false, 89), "html", null, true);
+                        echo "</td>
 \t\t\t\t\t<td>";
-                    // line 83
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 83), "montant", [], "any", false, false, false, 83), "html", null, true);
-                    echo "</td>
+                        // line 90
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["unfrais"], "Fraisforfait", [], "any", false, false, false, 90), "montant", [], "any", false, false, false, 90), "html", null, true);
+                        echo "</td>
 \t\t\t\t</tr>
 \t\t\t\t";
+                    }
+                    // line 93
+                    echo "\t\t\t\t";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['unfrais'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 86
+                // line 94
                 echo "\t\t\t\t</table>
 \t\t\t";
             }
-            // line 88
+            // line 96
             echo "\t\t\t<br/>
 \t\t\t<br/>
 \t\t\t<input type=\"submit\" value=\"Valider\" />
 \t\t";
         }
-        // line 92
-        echo "\t\t";
-        if (((isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 92, $this->source); })()) == null)) {
-            // line 93
-            echo "\t\t\t<h2>Aucune Fiche Frais cette Année</h2>
-\t\t";
-        }
-        // line 94
-        echo " 
-\t\t</form>
+        // line 100
+        echo "\t\t</form>
 \t</body>
 \t
 </html>
@@ -237,7 +259,7 @@ tr, td{
 
     public function getDebugInfo()
     {
-        return array (  217 => 94,  213 => 93,  210 => 92,  204 => 88,  200 => 86,  191 => 83,  187 => 82,  183 => 81,  179 => 80,  176 => 79,  172 => 78,  157 => 66,  153 => 65,  149 => 64,  134 => 52,  130 => 51,  126 => 50,  122 => 49,  111 => 40,  109 => 39,  104 => 36,  93 => 34,  89 => 33,  83 => 29,  81 => 28,  77 => 27,  72 => 25,  68 => 24,  64 => 23,  40 => 1,);
+        return array (  240 => 100,  234 => 96,  230 => 94,  224 => 93,  218 => 90,  214 => 89,  210 => 88,  206 => 87,  203 => 86,  200 => 85,  196 => 84,  184 => 74,  178 => 73,  172 => 70,  168 => 69,  164 => 68,  161 => 67,  158 => 66,  154 => 65,  140 => 54,  136 => 53,  132 => 52,  128 => 51,  117 => 42,  115 => 41,  110 => 38,  104 => 37,  96 => 35,  93 => 34,  89 => 33,  83 => 29,  81 => 28,  77 => 27,  72 => 25,  68 => 24,  64 => 23,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -275,7 +297,9 @@ tr, td{
 \t\t\t<br/>
 \t\t\t<select name=\"Mois\" id=\"mois\">
 \t\t\t{% for unmois in mois %}
-        \t\t<option value=\"{{ unmois.id }}\">{{ unmois.id }}</option>
+\t\t\t\t{% if unmois.id != Month %}
+        \t\t\t<option value=\"{{ unmois.id }}\">{{ unmois.id }}</option>
+\t\t\t\t{% endif %}
 \t\t\t{% endfor %}
 \t\t\t</select>
 \t\t\t<br/>
@@ -304,11 +328,15 @@ tr, td{
 \t\t\t\t\t<th>Montant</th>
 \t\t\t\t\t<th>Libelle</th>
 \t\t\t\t</thead>
-\t\t\t\t<tr>
-\t\t\t\t\t<td>{{ fiche.ligneFraisHorsForfait.date|date('d-m-Y') }}</td>
-\t\t\t\t\t<td>{{ fiche.ligneFraisHorsForfait.montant }}</td>
-\t\t\t\t\t<td>{{ fiche.ligneFraisHorsForfait.libelle }}</td>
-\t\t\t\t</tr>
+\t\t\t\t{% for FHF in fiche.ligneFraisHorsForfaits %}
+\t\t\t\t\t{% if FHF != null %}
+\t\t\t\t\t<tr>
+\t\t\t\t\t\t<td>{{ FHF.date|date('d-m-Y') }}</td>
+\t\t\t\t\t\t<td>{{ FHF.montant }}</td>
+\t\t\t\t\t\t<td>{{ FHF.libelle }}</td>
+\t\t\t\t\t</tr>
+\t\t\t\t\t{% endif %}
+\t\t\t\t{% endfor %}
 \t\t\t\t</table>
 \t\t\t\t<br/>
 \t\t\t\t<h2>Ligne frais forfait<h2/>
@@ -320,12 +348,14 @@ tr, td{
 \t\t\t\t\t<th>Montant</th>
 \t\t\t\t</thead>
 \t\t\t\t{% for unfrais in frais %}
+\t\t\t\t{% if unfrais != null %}
 \t\t\t\t<tr>
 \t\t\t\t\t<td>{{ unfrais.Fraisforfait.id }}</td>
 \t\t\t\t\t<td>{{ unfrais.Fraisforfait.libelle  }}</td>
 \t\t\t\t\t<td>{{ unfrais.quantite }}</td>
 \t\t\t\t\t<td>{{ unfrais.Fraisforfait.montant }}</td>
 \t\t\t\t</tr>
+\t\t\t\t{% endif %}
 \t\t\t\t{% endfor %}
 \t\t\t\t</table>
 \t\t\t{% endif %}
@@ -333,9 +363,6 @@ tr, td{
 \t\t\t<br/>
 \t\t\t<input type=\"submit\" value=\"Valider\" />
 \t\t{% endif %}
-\t\t{% if mois == null %}
-\t\t\t<h2>Aucune Fiche Frais cette Année</h2>
-\t\t{% endif %} 
 \t\t</form>
 \t</body>
 \t
