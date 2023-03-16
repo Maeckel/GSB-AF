@@ -76,7 +76,18 @@ tr, td{
 	<body>
 		<a href="{{ path('app_consulter') }}">Consulter fiche frais</a>
 		<a href="{{ path('app_espace_visiteur') }}">Acceuil</a>
-		<a href="{{ path('app_visiteur_deconnexion') }}">Se déconnecter</a>
+		<a class="button" onclick="openForm()" href="#popup2">Déconnexion</a>
+		<div id="popup2" class="overlay">
+					  <div class="popup">
+					  <h2>Confirmation</h2>
+					  <a class="close" href="#">&times;</a>
+					  <div class="content">
+					  Etes-vous certains de vouloir fermer la session ?
+					  </div>
+    				  <br/>
+    				  <a class="button" href="{{ path('app_visiteur_deconnexion') }}">Oui</a>
+				</div>
+			</div>
 		<br/>
 		<br/>
 		<a href="{{ path('app_frais_hors_forfait') }}">+ Nouveau frais hors forfait +</a>

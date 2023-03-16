@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\modeles\ModeleGSB;
 use App\Entity\FicheFrais;
 use App\Entity\LigneFraisForfait;
+use App\Entity\Visiteur;
 
 class VisiteurController extends AbstractController
 {
@@ -26,20 +27,21 @@ class VisiteurController extends AbstractController
         $login = $_POST[ "login" ] ;
 	    $mdp = $_POST[ "mdp" ] ;
 	
-	    $visiteur = ModeleGSB::getVisiteur( $login , $mdp ) ;
+	    $Co = $this -> getDoctrine() 
+                    -> getRepository('App\Entity\Visiteur') ;
+
+        $visiteur = $Co -> findOneBy(array('login' => $login , 'mdp' => $mdp));
 	
 	    if( $visiteur !== FALSE ){
 
             $session = $request->getSession();
 
-		    $session->set('id' , $visiteur[ "id" ]) ;
-		    $session->set('nom' , $visiteur[ "nom" ]) ; 
-		    $session->set('prenom' , $visiteur[ "prenom" ]) ; 
-            $session->set('login' , $visiteur[ "nom" ]) ; 
-		    $session->set('mdp' , $visiteur[ "mdp" ]) ; 
+		    $session->set('id' , $visiteur->getId()) ;
+		    $session->set('nom' , $visiteur->getNom()) ; 
+		    $session->set('prenom' , $visiteur->getPrenom()) ; 
 
-            $login = $session->get('login');
-            $mdp = $session->get('mdp');
+            //$login = $session->get('login');
+            //$mdp = $session->get('mdp');
             
 		    return $this->redirectToRoute('app_espace_visiteur', array('visiteur' => $visiteur) );
 	    }
@@ -90,10 +92,25 @@ class VisiteurController extends AbstractController
 
         $idVisiteur = $this->get('session')->get('id');
         $Month = date('m/Y');
+        $MontantValider = 0;
+        $DateModif = date('Y-m-d');
 
         $Co = $this -> getDoctrine() 
 					-> getRepository('App\Entity\FicheFrais') ;
         $fiche = $Co -> findOneBy(array('id' => $Month , 'visiteur' => $idVisiteur));
+
+        $idFichefrais = $fiche->getId();
+
+        foreach($fiche->getLigneFraisHorsForfaits() as $valeur){
+            
+            $MontantValider = $MontantValider + $valeur->getMontant();
+        }
+        foreach($fiche->getLigneFraisForfaits() as $valeur){
+
+            $MontantValider = $MontantValider + ( $valeur->getQuantite() * $valeur->getFraisforfait()->getMontant() );
+        }
+
+        ModeleGSB::UpdateFiche( $idVisiteur , $idFichefrais , $MontantValider , $DateModif );
 
         if($fiche == null){
 
@@ -195,10 +212,52 @@ class VisiteurController extends AbstractController
     public function Initialiser()
     {
         session_start();
+
+        $Co = $this -> getDoctrine() 
+					-> getRepository('App\Entity\FraisForfait') ;
+
+        $FF = $Co -> findAll();
+        $Resultat = null;
+        $fiche = null;
+        $erreur = null;
+        $Enregistrer = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            $FraisForfait = $_POST['FraisForfait'];
+            $Quantite = $_POST['Quantite'];
+            $visiteur = $this->get('session')->get('id');
+            $Month = date('m/Y');
+            $date = date('Y-m-d');
+            
+
+            $Co = $this -> getDoctrine() 
+					    -> getRepository('App\Entity\FicheFrais') ;
+            $fiche = $Co -> findOneBy(array('id' => $Month , 'visiteur' => $visiteur));
+            
+            if($fiche == null){
+                ModeleGSB::Initialiser( $visiteur , $Month ,    $date );
+            }
+
+            foreach($fiche->getLigneFraisForfaits() as $valeur){
+                if($FraisForfait == $valeur->getFraisforfait()->getId()){
+                    
+                $erreur = "Frais forfait deja existant !";
+
+                return $this->render('visiteur/initialiser.html.twig', [ 'FF' => $FF, 'resultat' => $Resultat, 'fiche' => $fiche, 'erreur' => $erreur, 'enregistrer' => $Enregistrer ]);
+                }
+            }
+            
+
+            ModeleGSB::AjouterFraisForfait($visiteur , $Month , $FraisForfait , $Quantite);
+
+            $Enregistrer = "Votre saisi a bien ete enregistrer !";
+
+            return $this->render('visiteur/initialiser.html.twig', [ 'FF' => $FF, 'resultat' => $Resultat, 'fiche' => $fiche, 'erreur' => $erreur, 'enregistrer' => $Enregistrer ]);
+
+        }
         
-        return $this->render('visiteur/initialiser.html.twig', [
-            'controller_name' => 'VisiteurController',
-        ]);
+        return $this->render('visiteur/initialiser.html.twig', [ 'FF' => $FF, 'fiche' => $fiche, 'erreur' => $erreur, 'enregistrer' => $Enregistrer ]);
     }
 
     public function Deconnecter()

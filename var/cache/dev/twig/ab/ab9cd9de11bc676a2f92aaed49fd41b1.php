@@ -40,6 +40,72 @@ class __TwigTemplate_8042186e50a7fb9e7e8d1c2d036cce6e extends Template
         echo "<!DOCTYPE html>
 <html lang=\"fr\">
 
+<script>
+function openForm() {
+  document.getElementById(\"popup1\").style.display = \"block\";
+}
+
+function closeForm() {
+  document.getElementById(\"popup1\").style.display = \"none\";
+}
+</script>
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    table{
+  border-collapse: collapse;
+}
+tr, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+</style>
+
 \t<head>
 \t\t<meta charset=\"utf-8\">
 \t\t<title>GSB - Frais</title>
@@ -48,23 +114,34 @@ class __TwigTemplate_8042186e50a7fb9e7e8d1c2d036cce6e extends Template
 \t
 \t<body>
 \t\t<a href=\"";
-        // line 11
+        // line 77
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_renseigner");
         echo "\">Renseigner fiche frais</a>
 \t\t<a href=\"";
-        // line 12
+        // line 78
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_consulter");
         echo "\">Consulter fiche frais</a>
-\t\t<a href=\"";
-        // line 13
+\t\t<a class=\"button\" onclick=\"openForm()\" href=\"#popup1\">Déconnexion</a>
+\t\t<div id=\"popup1\" class=\"overlay\">
+\t\t\t\t\t  <div class=\"popup\">
+\t\t\t\t\t  <h2>Confirmation</h2>
+\t\t\t\t\t  <a class=\"close\" href=\"#\">&times;</a>
+\t\t\t\t\t  <div class=\"content\">
+\t\t\t\t\t  Etes-vous certains de vouloir fermer la session ?
+\t\t\t\t\t  </div>
+    \t\t\t\t  <br/>
+    \t\t\t\t  <a class=\"button\" href=\"";
+        // line 88
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_visiteur_deconnexion");
-        echo "\">Se déconnecter</a>
+        echo "\">Oui</a>
+\t\t\t\t\t  </div>
+\t\t\t\t\t</div>
 \t\t
 \t\t<h5>";
-        // line 15
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "session", [], "any", false, false, false, 15), "get", [0 => "nom"], "method", false, false, false, 15), "html", null, true);
+        // line 92
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 92, $this->source); })()), "session", [], "any", false, false, false, 92), "get", [0 => "nom"], "method", false, false, false, 92), "html", null, true);
         echo " | ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "session", [], "any", false, false, false, 15), "get", [0 => "prenom"], "method", false, false, false, 15), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 92, $this->source); })()), "session", [], "any", false, false, false, 92), "get", [0 => "prenom"], "method", false, false, false, 92), "html", null, true);
         echo "</h5>
 
 \t\t
@@ -88,13 +165,79 @@ class __TwigTemplate_8042186e50a7fb9e7e8d1c2d036cce6e extends Template
 
     public function getDebugInfo()
     {
-        return array (  65 => 15,  60 => 13,  56 => 12,  52 => 11,  40 => 1,);
+        return array (  142 => 92,  135 => 88,  122 => 78,  118 => 77,  40 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!DOCTYPE html>
 <html lang=\"fr\">
+
+<script>
+function openForm() {
+  document.getElementById(\"popup1\").style.display = \"block\";
+}
+
+function closeForm() {
+  document.getElementById(\"popup1\").style.display = \"none\";
+}
+</script>
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    table{
+  border-collapse: collapse;
+}
+tr, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+</style>
 
 \t<head>
 \t\t<meta charset=\"utf-8\">
@@ -105,7 +248,18 @@ class __TwigTemplate_8042186e50a7fb9e7e8d1c2d036cce6e extends Template
 \t<body>
 \t\t<a href=\"{{ path('app_renseigner') }}\">Renseigner fiche frais</a>
 \t\t<a href=\"{{ path('app_consulter') }}\">Consulter fiche frais</a>
-\t\t<a href=\"{{ path('app_visiteur_deconnexion') }}\">Se déconnecter</a>
+\t\t<a class=\"button\" onclick=\"openForm()\" href=\"#popup1\">Déconnexion</a>
+\t\t<div id=\"popup1\" class=\"overlay\">
+\t\t\t\t\t  <div class=\"popup\">
+\t\t\t\t\t  <h2>Confirmation</h2>
+\t\t\t\t\t  <a class=\"close\" href=\"#\">&times;</a>
+\t\t\t\t\t  <div class=\"content\">
+\t\t\t\t\t  Etes-vous certains de vouloir fermer la session ?
+\t\t\t\t\t  </div>
+    \t\t\t\t  <br/>
+    \t\t\t\t  <a class=\"button\" href=\"{{ path('app_visiteur_deconnexion') }}\">Oui</a>
+\t\t\t\t\t  </div>
+\t\t\t\t\t</div>
 \t\t
 \t\t<h5>{{ app.session.get('nom') }} | {{ app.session.get('prenom') }}</h5>
 

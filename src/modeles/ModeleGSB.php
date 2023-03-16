@@ -63,4 +63,28 @@ class ModeleGSB {
 		$st->closeCursor() ;
 	}
 
+	public static function Initialiser( $visiteur , $Month , $date ){
+		$bd = self::getConnexion() ;
+		$sql = 'insert into fiche_frais( id , visiteur_id, etat_id , nb_justificatifs , montant_valide , date_modif )' . 'values( :Month , :visiteur_id , "CR" , 0 , 0 , :date )' ;
+		$st = $bd->prepare( $sql ) ;
+		$st->execute( array( ':visiteur_id' => $visiteur , ':Month' => $Month , ':date' => $date ) ) ;
+		$st->closeCursor() ;
+	}
+
+	public static function AjouterFraisForfait($visiteur , $Month , $FraisForfait , $Quantite){
+		$bd = self::getConnexion() ;
+		$sql = 'insert into ligne_frais_forfait( visiteur_id , fichefrais_id, fraisforfait_id , quantite )' . 'values( :visiteur , :Month , :FraisForfait , :Quantite )' ;
+		$st = $bd->prepare( $sql ) ;
+		$st->execute( array( ':visiteur' => $visiteur , ':Month' => $Month , ':FraisForfait' => $FraisForfait , ':Quantite' =>  $Quantite ) ) ;
+		$st->closeCursor() ;
+	}
+
+	public static function UpdateFiche( $idVisiteur , $idFichefrais , $MontantValider , $DateModif ){
+		$bd = self::getConnexion() ;
+		$sql = "UPDATE fiche_frais SET montant_valide = :MontantValider , date_modif = :DateModif where visiteur_id = :idVisiteur and id = :idFichefrais" ;
+		$st = $bd->prepare( $sql ) ;
+		$st->execute( array( ':idVisiteur' => $idVisiteur, ':idFichefrais' => $idFichefrais, ':MontantValider' => $MontantValider , ':DateModif' => $DateModif ) ) ;
+		$st->closeCursor() ;
+	}
+
 }
